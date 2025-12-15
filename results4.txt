@@ -1,0 +1,140 @@
+{
+  "summary": [
+    {
+      "item": "Calculer le lendemain d'une date",
+      "evidence": "Ecrire un programme Python qui permet de calculer le lendemain d’une date selon les critères suivants :"
+    },
+    {
+      "item": "Calculer la probabilité de gagner au jeu dans l'ordre ou dans le désordre",
+      "evidence": "x = n ! / (n - p) ! y = n ! / (p ! * (n – p) !)"
+    },
+    {
+      "item": "Déterminer si une année est bissextile",
+      "evidence": "une année est bissextile (contient 366 jours) si elle est multiple de 4, sauf les années de début de siècle (qui se terminent par 00) qui ne sont bissextiles que si elles sont divisibles par 400."
+    },
+    {
+      "item": "Calculer le prix TTC d'un produit",
+      "evidence": "Ecrire un programme Python qui lit un prix hors taxe et qui calcule et affiche le prix TTC (Toutes Taxes Comprises) correspondant"
+    },
+    {
+      "item": "Calculer une équation du second degré",
+      "evidence": "Ecrire un programme Python qui permet de calculer une équation du second degré."
+    },
+    {
+      "item": "Déterminer la mention d'un élève en fonction de sa moyenne",
+      "evidence": "Si moyenne >= 10, mention \"Passable\" Si moyenne >= 8, \"Admis oral du deuxième groupe\" Sinon \"Recalé\""
+    },
+    {
+      "item": "Calculer la remise sur un produit",
+      "evidence": "0% pour un montant TTC inférieur à 100 dollars, 1% pour un montant TTC supérieur ou égal à 100 dollars et inférieur à 200 dollars, 2% pour un montant TTC supérieur ou égal à 200 dollars et inférieur à 500 dollars, 5% pour un montant TTC supérieur ou égal à 500 dollars."
+    },
+    {
+      "item": "Calculer la probabilité de gagner au jeu dans l'ordre",
+      "evidence": "x = n ! / (n - p) !"
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Ecrire un programme Python qui permet de calculer le lendemain d’une date selon les critères suivants :",
+      "answer": "NOT_FOUND",
+      "evidence": "Exercice 3.20 Ecrire un programme Python qui permet de calculer le lendemain d’une date selon les critères suivants :"
+    },
+    {
+      "question": "Ecrire un programme Python qui lit un prix hors taxe et qui calcule et affiche le prix TTC (Toutes Taxes Comprises) correspondant",
+      "answer": "NOT_FOUND",
+      "evidence": "Exercice 3.10 Écrire un programme Python qui lit un prix hors taxe et qui calcule et affiche le prix TTC (Toutes Taxes Comprises)"
+    },
+    {
+      "question": "Ecrire un programme Python qui permet de calculer une équation du second degré.",
+      "answer": "NOT_FOUND",
+      "evidence": "Exercice 3.11 Ecrire un programme Python qui permet de calculer une équation du second degré."
+    },
+    {
+      "question": "Calculer la probabilité x de gagner au jeu dans l’ordre, et la probabilité y de gagner au jeu dans le désordre",
+      "answer": "NOT_FOUND",
+      "evidence": "Exercice 3.11 Tél : +243 818899608 email :saintjean.djungu.ahuka@cgea-rdc.org"
+    },
+    {
+      "question": "Calculer la probabilité x de gagner au jeu dans l’ordre, et la probabilité y de gagner au jeu dans le désordre",
+      "answer": "NOT_FOUND",
+      "evidence": "x = n ! / (n - p) ! y = n ! / (p ! * (n – p) !)"
+    },
+    {
+      "question": "Calculer la probabilité x de gagner au jeu dans l’ordre, et la probabilité y de gagner au jeu dans le désordre",
+      "answer": "NOT_FOUND",
+      "evidence": "x = n ! / (n - p) ! y = n ! / (p ! * (n – p) !)"
+    },
+    {
+      "question": "Calculer la probabilité x de gagner au jeu dans l’ordre, et la probabilité y de gagner au jeu dans le désordre",
+      "answer": "NOT_FOUND",
+      "evidence": "x = n ! / (n - p) ! y = n ! / (p ! * (n – p) !)"
+    },
+    {
+      "question": "Calculer la probabilité x de gagner au jeu dans l’ordre, et la probabilité y de gagner au jeu dans le désordre",
+      "answer": "NOT_FOUND",
+      "evidence": "x = n ! / (n - p) ! y = n ! / (p ! * (n – p) !)"
+    }
+  ],
+  "mcq": [
+    {
+      "question": "Quel est le taux de TVA ?",
+      "choices": {
+        "A": "16%",
+        "B": "20%",
+        "C": "10%",
+        "D": "5%"
+      },
+      "correct": "A",
+      "explanation": "Le taux de TVA est de 16%",
+      "evidence": "Il établit ensuite une remise dont le taux est le suivant : ... 16%"
+    },
+    {
+      "question": "Quel est le montant TTC pour un prix hors taxe de 100 dollars ?",
+      "choices": {
+        "A": "116 dollars",
+        "B": "120 dollars",
+        "C": "110 dollars",
+        "D": "130 dollars"
+      },
+      "correct": "A",
+      "explanation": "Le montant TTC est de 116 dollars",
+      "evidence": "Il établit ensuite une remise dont le taux est le suivant : ... pour un montant TTC inférieur à 100 dollars"
+    },
+    {
+      "question": "Quel est le nombre de jours dans le mois de février ?",
+      "choices": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "31"
+      },
+      "correct": "B",
+      "explanation": "Le mois de février a 29 jours si l'année est bissextile",
+      "evidence": "mois de février ... Le nombre de jours dans le mois"
+    },
+    {
+      "question": "Quel est le taux de remise pour un montant TTC supérieur ou égal à 500 dollars ?",
+      "choices": {
+        "A": "0%",
+        "B": "1%",
+        "C": "2%",
+        "D": "5%"
+      },
+      "correct": "D",
+      "explanation": "Le taux de remise est de 5%",
+      "evidence": "On affichera la remise obtenue et le nouveau montant TTC. ... pour un montant TTC supérieur ou égal à 500 dollars"
+    },
+    {
+      "question": "Quel est le nombre de chevaux partants ?",
+      "choices": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "correct": "NOT_FOUND",
+      "explanation": "NOT_FOUND",
+      "evidence": "NOT_FOUND"
+    }
+  ]
+}

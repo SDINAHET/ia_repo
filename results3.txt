@@ -1,0 +1,90 @@
+{
+  "summary": [
+    {
+      "item": "Les données à caractère personnel me concernant qui figurent dans le présent formulaire de demande, ainsi que mes empreintes digitales et ma photo, seront communiquées aux autorités compétentes des États membres et traitées par elles",
+      "evidence": "Les données à caractère personnel me concernant qui figurent dans le présent formulaire de demande, ainsi que mes empreintes digitales et ma photo, seront communiquées aux autorités compétentes des États membres et traitées par elles,"
+    },
+    {
+      "item": "Ces données ainsi que celles concernant la décision relative à ma demande, ou toute décision d'annulation, d'abrogation ou de prolongation de visa, seront saisies et conservées dans le système d'information sur les visas (VIS) pendant une période",
+      "evidence": "Ces données ainsi que celles concernant la décision relative à ma demande, ou toute décision d'annulation, d'abrogation ou de prolongation de visa, seront saisies et conservées dans le système d'information sur les visas (VIS) pendant une période"
+    },
+    {
+      "item": "Les autorités de l'État membre compétentes pour le traitement des données sont le Ministère de l’Intérieur (Place Beauvau - 75800 Paris CEDEX 08) et le Ministère de l’Europe et des Affaires Etrangères (27 rue de la Convention – 75732 PARIS Cedex 15)",
+      "evidence": "Les autorités de l'État membre compétentes pour le traitement des données sont le Ministère de l’Intérieur (Place Beauvau - 75800 Paris CEDEX 08) et le Ministère de l’Europe et des Affaires Etrangères (27 rue de la Convention – 75732 PARIS Cedex 15)"
+    },
+    {
+      "item": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées",
+      "evidence": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées"
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Date de naissance (jour-mois-annee) :",
+      "answer": "1/4",
+      "evidence": "Date de naissance (jour-mois-année) : 1/4"
+    },
+    {
+      "question": "Profession actuelle :",
+      "answer": "* 21. Profession actuelle :",
+      "evidence": "* 21. Profession actuelle :"
+    },
+    {
+      "question": "Nom, adresse et numéro de téléphone de l’employeur.",
+      "answer": "* 22. Nom, adresse et numéro de téléphone de l’employeur.",
+      "evidence": "* 22. Nom, adresse et numéro de téléphone de l’employeur."
+    },
+    {
+      "question": "Objet(s) du voyage :",
+      "answer": " Tourisme  Affaires  Visite à la famille ou à des amis  Culture  Sports  Visite officielle  Raisons médicales  Études  Transit aérop",
+      "evidence": " Tourisme  Affaires  Visite à la famille ou à des amis  Culture  Sports  Visite officielle"
+    },
+    {
+      "question": "Nom et adresse de l’entreprise /l’organisation hôte :",
+      "answer": "*31. Nom et adresse de l’entreprise /l’organisation hôte :",
+      "evidence": "*31. Nom et adresse de l’entreprise /l’organisation hôte :"
+    },
+    {
+      "question": "Moyens de subsistance :",
+      "answer": " Argent liquide  Chèques de voyage   Carte de crédit   Hébergement prépayé   Transport prépayé",
+      "evidence": " Argent liquide"
+    },
+    {
+      "question": "Les autorités compétentes des États membres et traitées par elles, aux fins de la décision relative à ma demande de visa :",
+      "answer": "aux fins de l'examen de ma demande, il y a lieu de recueillir les données requises dans ce formulaire de demande, de me photographier et, le cas échéant, de prendre mes empreintes digitales.",
+      "evidence": "aux fins de l'examen de ma demande, il y a lieu de recueillir les données requises dans ce formulaire de demande, de me photographier et, le cas échéant, de prendre mes empreintes digitales."
+    }
+  ],
+  "mcq": [
+    {
+      "question": "Quels sont les documents qui doivent être remplis par les membres de la famille de ressortissants de l’UE, de l’EEE ou de la Confédération suisse ou de ressortissants du Royaume-Uni ?",
+      "choices": {
+        "A": "Cases 1 à 3 et 19 à 32",
+        "B": "Cases 21, 22, 30, 31 et 32",
+        "C": "Cases 1 à 3 et 19",
+        "D": "Cases 4 à 6"
+      },
+      "correct": "B",
+      "explanation": "Les membres de la famille de ressortissants de l’UE, de l’EEE ou de la Confédération suisse ou de ressortissants du Royaume-Uni ne doivent pas remplir les cases 21, 22, 30, 31 et 32.",
+      "evidence": "Les membres de la famille de ressortissants de l’UE, de l’EEE ou de la Confédération suisse ou de ressortissants du Royaume-Uni bénéficiaires de l'accord sur le retrait du Royaume-Uni ne doivent pas remplir les cases 21, 22, 30, 31 et 32 (assorties d'un *)."
+    },
+    {
+      "question": "Quels sont les documents qui doivent être fournis pour prouver l'identité du demandeur ?",
+      "choices": {
+        "A": "Passeport et carte d'identité",
+        "B": "Carte d'identité et permis de conduire",
+        "C": "Passeport et permis de conduire",
+        "D": "Carte d'identité et passeport"
+      },
+      "correct": "A",
+      "explanation": "Les données des cases 1 à 3 doivent correspondre à celles figurant sur le document de voyage.",
+      "evidence": "Les données des cases 1 à 3 doivent correspondre à celles figurant sur le document de voyage."
+    },
+    {
+      "question": "Quels sont les moyens de subsistance acceptés pour financer le séjour du demandeur ?",
+      "choices": {
+        "A": "Argent liquide, chèques de voyage et carte de crédit",
+        "B": "Hébergement prépayé et transport prépayé",
+        "C": "Carte de crédit et argent liquide",
+        "D": "Chèques de voyage et hébergement prépayé"
+      },
+      "c

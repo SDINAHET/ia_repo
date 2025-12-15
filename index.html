@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PDF Analyzer – Front</title>
+
+  <!-- Bootstrap (optionnel mais pratique) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { background: #0b1220; color: #e9eefc; }
+    .card { background: #101a33; border: 1px solid rgba(255,255,255,.08); }
+    .muted { color: rgba(233,238,252,.75); }
+    .badge-soft { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); }
+    .evidence { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .9rem; }
+    .ok { border-color: rgba(46, 204, 113, .6) !important; }
+    .ko { border-color: rgba(231, 76, 60, .6) !important; }
+  </style>
+</head>
+
+<body>
+  <div class="container py-4 py-md-5">
+
+    <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap mb-4">
+      <div>
+        <h1 class="h3 mb-1">PDF Analyzer</h1>
+        <div class="muted">Upload un PDF → appel API → affichage Summary / Questions / MCQ</div>
+      </div>
+      <span class="badge badge-soft rounded-pill px-3 py-2">FastAPI + Ollama + FAISS</span>
+    </div>
+
+    <!-- Config + Upload -->
+    <div class="card rounded-4 shadow-sm mb-4">
+      <div class="card-body p-3 p-md-4">
+        <div class="row g-3 align-items-end">
+          <div class="col-12 col-lg-5">
+            <label class="form-label">URL API</label>
+            <input id="apiUrl" class="form-control" value="http://127.0.0.1:8000/analyze" />
+            <div class="form-text text-light-emphasis">Ex: https://ton-domaine/analyze</div>
+          </div>
+
+          <div class="col-12 col-lg-5">
+            <label class="form-label">Fichier PDF</label>
+            <input id="file" class="form-control" type="file" accept=".pdf" />
+          </div>
+
+          <div class="col-12 col-lg-2 d-grid">
+            <button id="btn" class="btn btn-primary">Analyser</button>
+          </div>
+        </div>
+
+        <div id="status" class="mt-3 muted"></div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results" class="d-none">
+
+      <!-- SUMMARY -->
+      <div class="card rounded-4 shadow-sm mb-4">
+        <div class="card-body p-3 p-md-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="h5 mb-0">Summary</h2>
+            <button class="btn btn-sm btn-outline-light" id="copyJsonBtn">Copier JSON</button>
+          </div>
+          <hr class="border-light border-opacity-10 my-3" />
+          <ul id="summaryList" class="mb-0"></ul>
+        </div>
+      </div>
+
+      <!-- OPEN QUESTIONS -->
+      <div class="card rounded-4 shadow-sm mb-4">
+        <div class="card-body p-3 p-md-4">
+          <h2 class="h5 mb-0">Open questions</h2>
+          <div class="muted mt-1">Tu peux compléter les réponses puis exporter.</div>
+          <hr class="border-light border-opacity-10 my-3" />
+
+          <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0">
+              <thead>
+                <tr>
+                  <th style="width: 42%">Question</th>
+                  <th style="width: 28%">Réponse (modifiable)</th>
+                  <th style="width: 30%">Evidence</th>
+                </tr>
+              </thead>
+              <tbody id="openQuestionsBody"></tbody>
+            </table>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap mt-3">
+            <button class="btn btn-outline-light" id="exportOpenBtn">Exporter Open Questions (JSON)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MCQ -->
+      <div class="card rounded-4 shadow-sm mb-4">
+        <div class="card-body p-3 p-md-4">
+          <h2 class="h5 mb-0">QCM (MCQ)</h2>
+          <div class="muted mt-1">Clique une réponse → correction immédiate.</div>
+          <hr class="border-light border-opacity-10 my-3" />
+          <div id="mcqContainer" class="d-grid gap-3"></div>
+
+          <div class="d-flex gap-2 flex-wrap mt-3">
+            <button class="btn btn-outline-light" id="resetMcqBtn">Réinitialiser</button>
+            <button class="btn btn-outline-light" id="exportMcqBtn">Exporter MCQ (JSON)</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RAW JSON -->
+    <div id="rawWrap" class="card rounded-4 shadow-sm d-none">
+      <div class="card-body p-3 p-md-4">
+        <h2 class="h6 mb-2">Réponse brute (debug)</h2>
+        <pre id="rawJson" class="evidence mb-0"></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    let lastResponse = null;
+
+    function setStatus(msg, kind = "info") {
+      const el = $("status");
+      el.className = "mt-3 muted";
+      if (kind === "error") el.className = "mt-3 text-danger";
+      if (kind === "ok") el.className = "mt-3 text-success";
+      el.textContent = msg;
+    }
+
+    function escapeHtml(s) {
+      return (s ?? "").toString()
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderSummary(summary) {
+      const ul = $("summaryList");
+      ul.innerHTML = "";
+      if (!Array.isArray(summary)) {
+        ul.innerHTML = `<li class="muted">NOT_FOUND</li>`;
+        return;
+      }
+      summary.forEach((s) => {
+        const li = document.createElement("li");
+        li.className = "mb-2";
+        li.innerHTML = `
+          <div><strong>${escapeHtml(s.item ?? "NOT_FOUND")}</strong></div>
+          <div class="muted mt-1">Evidence :</div>
+          <div class="evidence p-2 rounded-3 bg-black bg-opacity-25 border border-light border-opacity-10">${escapeHtml(s.evidence ?? "NOT_FOUND")}</div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderOpenQuestions(openQuestions) {
+      const body = $("openQuestionsBody");
+      body.innerHTML = "";
+
+      if (!Array.isArray(openQuestions)) return;
+
+      openQuestions.forEach((q, idx) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>
+            <div><strong>${escapeHtml(q.question ?? "NOT_FOUND")}</strong></div>
+          </td>
+          <td>
+            <input class="form-control form-control-sm bg-black bg-opacity-25 text-light border border-light border-opacity-10"
+                   data-open-idx="${idx}"
+                   value="${escapeHtml(q.answer ?? "")}" />
+          </td>
+          <td>
+            <div class="evidence p-2 rounded-3 bg-black bg-opacity-25 border border-light border-opacity-10">${escapeHtml(q.evidence ?? "NOT_FOUND")}</div>
+          </td>
+        `;
+        body.appendChild(tr);
+      });
+
+      // sync edits back to lastResponse
+      body.querySelectorAll("input[data-open-idx]").forEach((inp) => {
+        inp.addEventListener("input", (e) => {
+          const i = Number(e.target.dataset.openIdx);
+          lastResponse.open_questions[i].answer = e.target.value;
+        });
+      });
+    }
+
+    function mcqCard(mcqItem, idx) {
+      const choices = mcqItem.choices || {};
+      const correct = mcqItem.correct;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "card rounded-4";
+      wrapper.innerHTML = `
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start gap-3">
+            <div>
+              <div class="muted mb-1">Question ${idx + 1}</div>
+              <div class="fw-semibold">${escapeHtml(mcqItem.question ?? "NOT_FOUND")}</div>
+            </div>
+            <span class="badge badge-soft rounded-pill">Réponse: ${escapeHtml(correct ?? "?")}</span>
+          </div>
+
+          <div class="mt-3 d-grid gap-2" role="group" aria-label="choices" data-mcq-idx="${idx}">
+            ${["A","B","C","D"].map(k => `
+              <button type="button"
+                      class="btn btn-outline-light text-start"
+                      data-choice="${k}">
+                <strong class="me-2">${k}.</strong> ${escapeHtml(choices[k] ?? "NOT_FOUND")}
+              </button>
+            `).join("")}
+          </div>
+
+          <div class="mt-3 d-none" data-feedback>
+            <div class="fw-semibold" data-result></div>
+            <div class="muted mt-1">Explication :</div>
+            <div class="p-2 rounded-3 bg-black bg-opacity-25 border border-light border-opacity-10">
+              ${escapeHtml(mcqItem.explanation ?? "NOT_FOUND")}
+            </div>
+
+            <div class="muted mt-2">Evidence :</div>
+            <div class="evidence p-2 rounded-3 bg-black bg-opacity-25 border border-light border-opacity-10">
+              ${escapeHtml(mcqItem.evidence ?? "NOT_FOUND")}
+            </div>
+          </div>
+        </div>
+      `;
+
+      // handlers
+      const group = wrapper.querySelector(`[data-mcq-idx="${idx}"]`);
+      const feedback = wrapper.querySelector("[data-feedback]");
+      const resultEl = wrapper.querySelector("[data-result]");
+
+      group.querySelectorAll("button[data-choice]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const picked = btn.dataset.choice;
+
+          // disable all
+          group.querySelectorAll("button").forEach(b => b.disabled = true);
+
+          // mark
+          const isOk = picked === correct;
+          btn.classList.toggle("ok", isOk);
+          btn.classList.toggle("ko", !isOk);
+
+          // highlight correct one if wrong
+          if (!isOk) {
+            const correctBtn = group.querySelector(`button[data-choice="${correct}"]`);
+            if (correctBtn) correctBtn.classList.add("ok");
+          }
+
+          feedback.classList.remove("d-none");
+          resultEl.textContent = isOk ? "✅ Bonne réponse" : "❌ Mauvaise réponse";
+
+          // store selection
+          lastResponse.mcq[idx].picked = picked;
+        });
+      });
+
+      return wrapper;
+    }
+
+    function renderMcq(mcq) {
+      const container = $("mcqContainer");
+      container.innerHTML = "";
+
+      if (!Array.isArray(mcq)) return;
+
+      mcq.forEach((item, idx) => {
+        container.appendChild(mcqCard(item, idx));
+      });
+    }
+
+    function showResults(resp) {
+      lastResponse = resp;
+
+      $("results").classList.remove("d-none");
+      $("rawWrap").classList.remove("d-none");
+
+      $("rawJson").textContent = JSON.stringify(resp, null, 2);
+
+      renderSummary(resp.summary);
+      renderOpenQuestions(resp.open_questions);
+      renderMcq(resp.mcq);
+    }
+
+    async function analyze() {
+      const apiUrl = $("apiUrl").value.trim();
+      const file = $("file").files[0];
+
+      if (!apiUrl) return setStatus("URL API manquante.", "error");
+      if (!file) return setStatus("Choisis un fichier PDF.", "error");
+
+      setStatus("Upload en cours…");
+
+      const fd = new FormData();
+      fd.append("file", file);
+
+      try {
+        const r = await fetch(apiUrl, { method: "POST", body: fd });
+        const data = await r.json();
+
+        if (!r.ok) {
+          setStatus(`Erreur API (${r.status}) : ${data?.error ?? "Unknown error"}`, "error");
+          return;
+        }
+        if (data?.error) {
+          setStatus(`Erreur : ${data.error}`, "error");
+          return;
+        }
+
+        setStatus("Analyse terminée ✅", "ok");
+        showResults(data);
+
+      } catch (e) {
+        setStatus("Impossible d’appeler l’API. Vérifie l’URL, le port, et CORS.", "error");
+        console.error(e);
+      }
+    }
+
+    $("btn").addEventListener("click", analyze);
+
+    $("copyJsonBtn").addEventListener("click", async () => {
+      if (!lastResponse) return;
+      await navigator.clipboard.writeText(JSON.stringify(lastResponse, null, 2));
+      setStatus("JSON copié dans le presse-papiers ✅", "ok");
+    });
+
+    $("exportOpenBtn").addEventListener("click", () => {
+      if (!lastResponse) return;
+      const payload = { open_questions: lastResponse.open_questions };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "open_questions.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    $("exportMcqBtn").addEventListener("click", () => {
+      if (!lastResponse) return;
+      const payload = { mcq: lastResponse.mcq };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "mcq.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    $("resetMcqBtn").addEventListener("click", () => {
+      if (!lastResponse) return;
+      // remove picked + re-render mcq
+      lastResponse.mcq = (lastResponse.mcq || []).map(x => {
+        const copy = { ...x };
+        delete copy.picked;
+        return copy;
+      });
+      renderMcq(lastResponse.mcq);
+      setStatus("QCM réinitialisé.", "ok");
+    });
+  </script>
+</body>
+</html>
