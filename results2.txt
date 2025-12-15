@@ -1,0 +1,134 @@
+
+Response body
+Download
+{
+  "summary": [
+    {
+      "item": "Les données à caractère personnel me concernant qui figurent dans le présent formulaire de demande, ainsi que mes empreintes digitales et ma photo, seront communiquées aux autorités compétentes des États membres et traitées par elles, aux fins de la décision relative à ma demande de visa.",
+      "evidence": "Les données à caractère personnel me concernant qui figurent dans le présent formulaire de demande, ainsi que mes empreintes digitales et ma photo, seront communiquées aux autorités compétentes des États membres et traitées par elles, aux fins de la décision relative à ma demande de visa,"
+    },
+    {
+      "item": "Ces données ainsi que celles concernant la décision relative à ma demande, ou toute décision d'annulation, d'abrogation ou de prolongation de visa, seront saisies et conservées dans le système d'information sur les visas (VIS) pendant une période.",
+      "evidence": "Ces données ainsi que celles concernant la décision relative à ma demande, ou toute décision d'annulation, d'abrogation ou de prolongation de visa, seront saisies et conservées dans le système d'information sur les visas (VIS) pendant une période"
+    },
+    {
+      "item": "Les autorités compétentes des États membres peuvent communiquer ces données à Europol aux fins de la prévention et de la détection des infractions terroristes et des autres infractions pénales graves, ainsi qu'aux fins des enquêtes en la matière.",
+      "evidence": "s certaines conditions, ces données seront aussi accessibles aux autorités désignées des États membres et à Europol aux fins de la prévention et de la détection des infractions terroristes et des autres infractions pénales graves, ainsi qu'aux fins des enquêtes en la matière."
+    },
+    {
+      "item": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées.",
+      "evidence": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées"
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Date de naissance (jour-mois-annee) :",
+      "answer": "1/4",
+      "evidence": "Date de naissance (jour-mois-année) : \n1/4"
+    },
+    {
+      "question": "Profession actuelle :",
+      "answer": "* 21. Profession actuelle :",
+      "evidence": "* 21. Profession actuelle :"
+    },
+    {
+      "question": "Nom, adresse et numéro de téléphone de l’employeur. Pour les étudiants, adresse de l’établissement d’enseignement :",
+      "answer": "* 22. Nom, adresse et numéro de téléphone de l’employeur. Pour les étudiants, adresse de l’établissement d’enseignement :",
+      "evidence": "* 22. Nom, adresse et numéro de téléphone de l’employeur. Pour les étudiants, adresse de l’établissement d’enseignement :"
+    },
+    {
+      "question": "Objet(s) du voyage :",
+      "answer": " Tourisme  Affaires  Visite à la famille ou à des amis  Culture  Sports  Visite officielle \n Raisons médicales  Études  Transit aérop",
+      "evidence": "23. Objet(s) du voyage :\n Tourisme \n Affaires \n Visite à la famille ou à des amis \n Culture \n Sports \n Visite officielle\n Raisons médicales \n Études \n Transit aérop"
+    },
+    {
+      "question": "Nom et adresse de l’entreprise /l’organisation hôte : Numéro de téléphone de l’entreprise /l’organisation :",
+      "answer": "*31. Nom et adresse de l’entreprise /l’organisation hôte : Numéro de téléphone de l’entreprise /l’organisation :",
+      "evidence": "*31. Nom et adresse de l’entreprise /l’organisation hôte : Numéro de téléphone de l’entreprise /l’organisation :"
+    },
+    {
+      "question": "Les frais de voyage et de subsistance durant le séjour du demandeur sont financés :",
+      "answer": "* 32. Les frais de voyage et de subsistance durant le séjour du demandeur sont financés :",
+      "evidence": "* 32. Les frais de voyage et de subsistance durant le séjour du demandeur sont financés :"
+    },
+    {
+      "question": "Moyens de subsistance : ",
+      "answer": " Argent liquide \n Chèques de voyage \n Carte de crédit \n Hébergement prépayé \n Transport prépayé",
+      "evidence": "Moyens de subsistance : \n Argent liquide\n Chèques de voyage\n Carte de crédit\n Hébergement prépayé\n Transport prépayé"
+    },
+    {
+      "question": "Nom, prénom, adresse, numéro de téléphone, et adresse électronique de la personne de contact dans l’entreprise/organisation :",
+      "answer": "* 32. Nom, prénom, adresse, numéro de téléphone, et adresse électronique de la personne de contact dans l’entreprise/organisation :",
+      "evidence": "* 32. Nom, prénom, adresse, numéro de téléphone, et adresse électronique de la personne de contact dans l’entreprise/organisation :"
+    },
+    {
+      "question": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées",
+      "answer": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées",
+      "evidence": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l’État membre qui les a transmises, et de demander que les données me concernant soient rectifiées"
+    }
+  ],
+  "mcq": [
+    {
+      "question": "Quels sont les documents qui doivent être fournis par les membres de la famille de ressortissants de l'UE, de l'EEE ou de la Confédération suisse ou de ressortissants du Royaume-Uni bénéficiaires de l'accord sur le retrait du Royaume-Uni ?",
+      "choices": {
+        "A": "Cases 21, 22, 30, 31 et 32",
+        "B": "Cases 1 à 3",
+        "C": "Toutes les cases",
+        "D": "Aucune des cases ci-dessus"
+      },
+      "correct": "B",
+      "explanation": "Les données des cases 1 à 3 doivent correspondre à celles figurant sur le document de voyage.",
+      "evidence": "Les membres de la famille de ressortissants de l’UE, de l’EEE ou de la Confédération suisse ou de ressortissants du Royaume-Uni bénéficiaires de l'accord sur le retrait du Royaume-Uni ne doivent pas remplir les cases 21, 22, 30, 31 et 32 (assorties d'un *)."
+    },
+    {
+      "question": "Quels sont les moyens de subsistance qui peuvent être fournis par le demandeur ?",
+      "choices": {
+        "A": "Argent liquide",
+        "B": "Chèques de voyage",
+        "C": "Carte de crédit",
+        "D": "Tous les éléments ci-dessus"
+      },
+      "correct": "D",
+      "explanation": "Les frais de voyage et de subsistance durant le séjour du demandeur sont financés.",
+      "evidence": " Argent liquide  Chèques de voyage   Carte de crédit"
+    },
+    {
+      "question": "Quels sont les autorités compétentes pour le traitement des données ?",
+      "choices": {
+        "A": "Ministère de l'Intérieur et Ministère de l'Europe et des Affaires Etrangères",
+        "B": "Police nationale et Ministère de la Justice",
+        "C": "Toutes les autorités ci-dessus",
+        "D": "Aucune des autorités ci-dessus"
+      },
+      "correct": "A",
+      "explanation": "Les autorités de l'État membre compétentes pour le traitement des données sont le Ministère de l’Intérieur (Place Beauvau - 75800 Paris CEDEX 08) et le Ministère de l’Europe et des Affaires Etrangères (27 rue de la Convention – 75732 PARIS Cedex 15).",
+      "evidence": "Les autorités de l'État membre compétentes pour le traitement des données sont le Ministère de l’Intérieur (Place Beauvau - 75800 Paris CEDEX 08) et le Ministère de l’Europe et des Affaires Etrangères (27 rue de la Convention – 75732 PARIS Cedex 15)."
+    },
+    {
+      "question": "Quel est le droit du demandeur en cas de notification des données me concernant qui sont enregistrées dans le VIS ?",
+      "choices": {
+        "A": "Obtenir les données rectifiées",
+        "B": "Demander la suppression des données",
+        "C": "Tous les éléments ci-dessus",
+        "D": "Aucun droit"
+      },
+      "correct": "C",
+      "explanation": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées.",
+      "evidence": "Je suis informé(e) de mon droit d'obtenir auprès de n'importe quel État membre la notification des données me concernant qui sont enregistrées dans le VIS ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées"
+    },
+    {
+      "question": "Quels sont les organismes auxquels les données seront accessibles ?",
+      "choices": {
+        "A": "Autorités compétentes des États membres et Europol",
+        "B": "Police nationale et Ministère de la Justice",
+        "C": "Tous les éléments ci-dessus",
+        "D": "Aucun organisme"
+      },
+      "correct": "C",
+      "explanation": "s certaines conditions, ces données seront aussi accessibles aux autorités désignées des États membres et à Europol aux fins de la prévention et de la détection des infractions terroristes et des autres infractions pénales graves, ainsi qu'aux fins des enquêtes en la matière.",
+      "evidence": "s certaines conditions, ces données seront aussi accessibles aux autorités désignées des États membres et à Europol aux fins de la prévention et de la détection des infractions terroristes et des autres infractions pénales graves, ainsi qu'aux fins des enquêtes en la matière."
+    }
+  ]
+}
+Response headers
+ access-control-allow-credentials: true 
